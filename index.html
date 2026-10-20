@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Physiology Practice</title>
+<meta name="description" content="Free practice for Human Physiology, Unit 2: nerves, senses and muscle. Key Concept cards, questions that explain every wrong answer, patient cases, sequences, tables and a practice test.">
+<meta name="theme-color" content="#16324f">
+<style>
+:root{
+  --paper:#f6f8fb; --card:#ffffff; --ink:#15202b; --soft:#56616e; --line:#dde3ea;
+  --accent:#1f5fae; --accent-ink:#ffffff; --ok:#1d7a4c; --warn:#b4532a; --trap:#a15c00; --trap-bg:#fff6e5;
+  --g0:#1f5fae; --g1:#7a3fa8; --g2:#0f7a6c; --g3:#b23a48; --g4:#8a5a00; --g5:#2e6b2e; --g6:#a0306f; --g7:#3a4a8a;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 6px 20px rgba(16,24,40,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11161c; --card:#1a2129; --ink:#e8edf2; --soft:#9aa6b2; --line:#2b3540;
+    --accent:#6aa6f0; --accent-ink:#0b1320; --ok:#5ccf93; --warn:#f09a6e; --trap:#f2b252; --trap-bg:#2a2214;
+    --g0:#6aa6f0; --g1:#b993e6; --g2:#4fc7b6; --g3:#ef7d8b; --g4:#e2b04f; --g5:#7fcf7f; --g6:#ef8cc4; --g7:#9fb0f0; --shadow:0 1px 2px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11161c; --card:#1a2129; --ink:#e8edf2; --soft:#9aa6b2; --line:#2b3540;
+  --accent:#6aa6f0; --accent-ink:#0b1320; --ok:#5ccf93; --warn:#f09a6e; --trap:#f2b252; --trap-bg:#2a2214;
+  --g0:#6aa6f0; --g1:#b993e6; --g2:#4fc7b6; --g3:#ef7d8b; --g4:#e2b04f; --g5:#7fcf7f; --g6:#ef8cc4; --g7:#9fb0f0; --shadow:0 1px 2px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:740px;margin:0 auto;padding:16px 16px 96px}
+h1,h2,h3{line-height:1.2}
+header.top{display:flex;align-items:center;gap:10px;margin:4px 0 14px}
+header.top h1{font-size:21px;margin:0;flex:1}
+.kicker{font-size:12px;letter-spacing:.7px;text-transform:uppercase;color:var(--soft);font-weight:700}
+.lede{color:var(--soft);margin:0 0 16px;font-size:15px}
+.icon-btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:8px 12px;font:inherit;font-size:15px;cursor:pointer;text-decoration:none}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow)}
+.stack{display:grid;gap:12px}
+.hero{display:grid;gap:12px;grid-template-columns:1fr auto;align-items:center}
+.hero .count{font-size:34px;font-weight:800;line-height:1}
+.next{display:flex;gap:14px;align-items:center;background:var(--accent);color:var(--accent-ink);border-radius:18px;padding:16px 18px;border:0;font:inherit;text-align:left;cursor:pointer;width:100%;box-shadow:var(--shadow)}
+.next b{font-size:18px} .next .d{opacity:.85;font-size:14px}
+.next .go{margin-left:auto;font-size:26px}
+.modes{display:grid;gap:10px}
+.mode{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px 15px;cursor:pointer;font:inherit;color:inherit;text-align:left;box-shadow:var(--shadow);width:100%}
+.mode .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:color-mix(in srgb,var(--accent) 14%,transparent);flex:none}
+.mode .d{font-size:14px;color:var(--soft)}
+.mode .score{margin-left:auto;font-size:13px;color:var(--soft);white-space:nowrap;padding-left:8px}
+.section-h{margin:26px 0 10px;font-size:15px;color:var(--soft);font-weight:700;letter-spacing:.3px;display:flex;align-items:center;gap:8px}
+.section-h .dot{width:10px;height:10px;border-radius:50%}
+.kcgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.kc{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--chc,var(--accent));border-radius:14px;padding:11px 13px;text-align:left;cursor:pointer;font:inherit;color:inherit;display:flex;flex-direction:column;gap:6px;min-height:86px}
+.kc .n{font-size:12px;color:var(--soft);font-weight:700;letter-spacing:.4px}
+.kc .t{font-weight:650;line-height:1.25;font-size:15px}
+.bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:auto}
+.bar>i{display:block;height:100%;background:var(--ok);width:0}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:0;border-radius:14px;padding:13px 18px;font:inherit;font-weight:650;cursor:pointer;background:var(--ink);color:var(--paper)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ok{background:var(--ok);color:#fff} .btn.warn{background:var(--warn);color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.ok,:root:not([data-theme="light"]) .btn.warn{color:#0b0d0f}}
+:root[data-theme="dark"] .btn.ok,:root[data-theme="dark"] .btn.warn{color:#0b0d0f}
+.btn[disabled]{opacity:.45;cursor:default}
+.progress{font-size:14px;color:var(--soft);margin:0 0 10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.progress a{color:var(--accent);text-decoration:none;font-weight:650}
+.pbar{height:5px;border-radius:5px;background:var(--line);overflow:hidden;margin:-4px 0 14px}
+.pbar>i{display:block;height:100%;background:var(--accent)}
+.stem{font-size:19px;line-height:1.45;margin:0 0 14px}
+.case-h{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--g3);margin-bottom:6px}
+.choices{display:grid;gap:9px}
+.choice{display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--line);background:var(--card);border-radius:14px;padding:12px 14px;font:inherit;color:inherit;text-align:left;cursor:pointer;width:100%}
+.choice .L{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:14px;font-weight:700;background:var(--paper);border:1px solid var(--line)}
+.choice.picked{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--card))}
+.choice.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--card))}
+.choice.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 12%,var(--card))}
+.choice[disabled]{cursor:default}
+.fb{margin-top:14px;border-radius:12px;padding:12px 14px;border-left:4px solid var(--ok);background:color-mix(in srgb,var(--ok) 9%,transparent)}
+.fb.miss{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 9%,transparent)}
+.fb p{margin:6px 0 0}
+details{margin-top:10px} summary{cursor:pointer;color:var(--accent);font-weight:650;font-size:15px}
+details ul{margin:8px 0 0;padding-left:18px;font-size:15px} details li{margin:4px 0}
+.trap{background:var(--trap-bg);border:1px solid color-mix(in srgb,var(--trap) 40%,transparent);border-radius:14px;padding:12px 14px;margin-top:12px}
+.trap b{color:var(--trap)}
+.label{font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--soft);font-weight:700;margin-top:12px}
+.big{font-size:24px;font-weight:700;line-height:1.25}
+.back-face{margin-top:14px;border-top:1px dashed var(--line);padding-top:14px}
+textarea{width:100%;font:inherit;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);min-height:120px;resize:vertical}
+.model{background:color-mix(in srgb,var(--accent) 8%,transparent);border-left:4px solid var(--accent);padding:12px 14px;border-radius:10px;margin-top:12px}
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.check input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--ok)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:10px 12px;font:inherit;font-size:15px;color:inherit;text-align:left;cursor:pointer}
+.chip.done{opacity:.35;cursor:default}
+.chip.bad{animation:shake .35s;border-color:var(--warn)}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+ol.built{margin:12px 0 0;padding-left:0;list-style:none;counter-reset:s;display:grid;gap:6px}
+ol.built li{counter-increment:s;display:flex;gap:10px;align-items:flex-start;background:color-mix(in srgb,var(--ok) 9%,var(--card));border:1px solid color-mix(in srgb,var(--ok) 35%,transparent);border-radius:12px;padding:9px 12px;font-size:15px}
+ol.built li::before{content:counter(s);flex:none;width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:var(--ok);color:#fff;font-weight:700;font-size:13px}
+.tablewrap{overflow-x:auto;margin-top:6px}
+table.drill{border-collapse:separate;border-spacing:0;width:100%;font-size:15px}
+table.drill th,table.drill td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}
+table.drill th{font-size:13px;color:var(--soft);font-weight:700}
+table.drill td.blank{color:var(--soft)}
+table.drill td.blank span{display:inline-block;min-width:90px;border:1.5px dashed var(--line);border-radius:8px;padding:2px 8px}
+table.drill td.cur span{border-color:var(--accent);border-style:solid;color:var(--accent);font-weight:700}
+table.drill td.filled{color:var(--ok);font-weight:650}
+.end{text-align:center}
+.end .score{font-size:46px;font-weight:800;line-height:1.1}
+.note{font-size:14px;color:var(--soft)}
+.review-item{border-top:1px solid var(--line);padding:12px 0}
+.tag{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.tag.ok{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)} .tag.miss{background:color-mix(in srgb,var(--warn) 15%,transparent);color:var(--warn)}
+footer{color:var(--soft);font-size:13px;margin-top:34px;text-align:center;line-height:1.6}
+footer button{background:none;border:0;color:var(--soft);text-decoration:underline;font:inherit;cursor:pointer}
+@media (max-width:480px){ .stem{font-size:18px} .hero .count{font-size:28px} .card{padding:16px}
+  table.drill{font-size:14px} table.drill th,table.drill td{padding:8px 4px} table.drill th[scope=row]{font-size:14px!important}
+  table.drill td.blank span{min-width:44px;padding:2px 6px} }
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main id="app" aria-live="polite"></main>
+<script src="data.js"></script>
+<script>
+/* Companion practice engine (Anatomy Practice, BIO 210 Unit 2, 10/6/2026; same engine as Physiology Practice, made data-driven:
+   groups, card decks, app name and storage key all come from data.js). New practice items only; never live quiz or exam items
+   (build.py checks every stem). Progress lives only on this device (localStorage). */
+const P = window.PHYS, U = P.unit, KEY = U.key;
+const GKEYS = P.groups.map(g => g[0]), GLABEL = Object.fromEntries(P.groups), DECKS = P.decks || [];
+const LADDER = [0, 1, 4, 10, 21, 45], DAY = 864e5;
+const today = () => { const d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset() * 6e4) / DAY); };   /* local day, so it turns over at midnight, not 5 PM */
+let S = {cards:{}, q:{}, best:{}, tests:[], dk:{}};
+try { S = Object.assign(S, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+const $ = s => document.querySelector(s), app = $('#app');
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const topic = id => P.topics.find(t => t.id === id), kcNum = id => P.topics.findIndex(t => t.id === id) + 1, kcAt = n => P.topics[n - 1];
+const kcsOf = q => Array.isArray(q.kc) ? q.kc : [q.kc];
+const ALLQ = P.mcq.concat(P.cases);
+const qsFor = kc => ALLQ.filter(q => kcsOf(q).includes(kc));
+const chColor = ch => `var(--g${Math.max(0, GKEYS.indexOf(ch)) % 8})`;
+const mastery = kc => { const qs = qsFor(kc); return qs.length ? qs.filter(q => S.q[q.id]?.r === 1).length / qs.length : 0; };
+const started = kc => qsFor(kc).some(q => S.q[q.id]);
+const masteredCount = () => P.topics.filter(t => mastery(t.id) >= 0.999).length;
+const missed = () => ALLQ.filter(q => S.q[q.id] && S.q[q.id].r === 0);
+const dueCards = () => P.topics.filter(t => S.cards[t.id] && S.cards[t.id].due <= today());
+const deckDue = () => DECKS.reduce((n, d) => n + d.cards.filter(c => S.dk[c.id] && S.dk[c.id].due <= today()).length, 0);
+const newCards = () => P.topics.filter(t => !S.cards[t.id]);
+function record(q, right) { const st = S.q[q.id] || {n:0, w:0}; st.n++; if (!right) st.w++; st.r = right ? 1 : 0; st.t = today(); S.q[q.id] = st; save(); }
+function daysToExam() { const d = new Date(U.exam.date + 'T00:00:00'), t = new Date(); t.setHours(0, 0, 0, 0); return Math.round((d - t) / DAY); }
+
+/* ---------- router (so the phone's back button works) ---------- */
+const routes = [
+  [/^$|^home$/, () => home()],
+  [/^kc\/(kc\w+)$/, m => concept(m[1])],
+  [/^cards$/, () => cards()],
+  [/^quiz$/, () => quizMenu()],
+  [/^quiz\/g\/(\w+)$/, m => quiz(pick(P.mcq.filter(q => topic(q.kc).ch === m[1]), 10), {title:GLABEL[m[1]] || m[1], key:'g' + m[1]})],
+  [/^deck\/(\w+)(?:\/(kc\w+))?$/, m => deck(DECKS.find(d => d.id === m[1]), m[2])],
+  [/^quiz\/(kc\w+)$/, m => quiz(shuffle(qsFor(m[1])), {title:'Key Concept ' + kcNum(m[1]), key:m[1], back:'#kc/' + m[1]})],
+  [/^quiz\/mixed$/, () => quiz(pick(P.mcq, 12), {title:'Mixed', key:'mixed'})],
+  [/^misses$/, () => quiz(shuffle(missed()).slice(0, 15), {title:'Your misses', key:'misses'})],
+  [/^cases$/, () => quiz(pick(P.cases, 6), {title:'What broke?', key:'cases'})],
+  [/^test$/, () => test()],
+  [/^order$/, () => menu('order')],
+  [/^order\/(o\d+)$/, m => order(P.order.find(o => o.id === m[1]))],
+  [/^tables$/, () => menu('tables')],
+  [/^tables\/(t\d+)$/, m => tableDrill(P.tables.find(t => t.id === m[1]))],
+  [/^explain$/, () => menu('explain')],
+  [/^explain\/(e\d+)$/, m => explain(P.explain.find(e => e.id === m[1]))],
+];
+function route() {
+  document.onkeydown = null;   /* a quiz's a/b/c/d keys must never answer from another page */
+  const h = decodeURIComponent(location.hash.replace(/^#/, ''));
+  for (const [re, fn] of routes) { const m = h.match(re); if (m) { window.scrollTo(0, 0); return fn(m); } }
+  home();
+}
+window.addEventListener('hashchange', route);
+const go = h => { if (location.hash === h) route(); else location.hash = h; };
+/* new and missed first, then the rest */
+function pick(pool, n) {
+  const score = q => !S.q[q.id] ? 0 : S.q[q.id].r === 0 ? 1 : 2;
+  return shuffle(pool).sort((a, b) => score(a) - score(b)).slice(0, n);
+}
+
+/* ---------- home ---------- */
+function home() {
+  const dte = daysToExam(), due = dueCards().length, miss = missed().length, m = masteredCount();
+  const nxt = nextStep();
+  const best = k => S.best[k] != null ? `best ${S.best[k]}` : '';
+  app.innerHTML = `
+  <header class="top"><div style="flex:1"><div class="kicker">${esc(U.course)} · Unit ${U.unit}</div><h1>${esc(U.app)}</h1></div></header>
+  <p class="lede">${esc(U.title)}, ${esc(U.chapters)}. Answer before you look, and every miss shows you why.</p>
+  <div class="card hero" style="margin-bottom:12px">
+    <div><div class="kicker">Key Concepts mastered</div><div class="count">${m} <span style="font-size:18px;color:var(--soft);font-weight:600">of ${P.topics.length}</span></div>
+      <div class="bar" style="margin-top:10px"><i style="width:${Math.round(100 * m / P.topics.length)}%"></i></div></div>
+    ${dte >= 0 && dte <= 60 ? `<div style="text-align:right"><div class="kicker">${esc(U.exam.name)}</div><div class="count">${dte === 0 ? 'Today' : dte}</div><div class="note">${dte === 0 ? '' : dte === 1 ? 'day · ' : 'days · '}${esc(U.exam.label)}</div></div>` : ''}
+  </div>
+  <button class="next" id="nx"><span><span class="kicker" style="color:inherit;opacity:.8">Your next step</span><br><b>${esc(nxt.t)}</b><div class="d">${esc(nxt.d)}</div></span><span class="go" aria-hidden="true">›</span></button>
+  <div class="section-h">Ways to practice</div>
+  <div class="modes">
+    ${mode('#test', '🎯', 'Practice test', '25 questions across the whole unit, scored at the end', S.tests.length ? 'last ' + S.tests[S.tests.length - 1].pct + '%' : '')}
+    ${mode('#cards', '🃏', 'Key Concept cards', 'Say the answer out loud, then flip. Spaced review.', due ? due + ' due' : '')}
+    ${DECKS.map(d => { const n = d.cards.filter(c => S.dk[c.id] && S.dk[c.id].due <= today()).length; return mode('#deck/' + d.id, d.id === 'dmus' ? '💪' : '🕳️', esc(d.title), esc(d.desc), n ? n + ' due' : d.cards.length + ' cards'); }).join('')}
+    ${mode('#quiz', '❓', 'Quiz with feedback', 'Pick a section. Every wrong choice explained.', '')}
+    ${mode('#cases', '🩺', 'What broke?', 'Patient cases: find the structure or step that failed', best('cases'))}
+    ${mode('#order', '🔢', 'Put it in order', U.order_blurb || 'Sequences worth knowing cold', '')}
+    ${mode('#tables', '📊', 'Rebuild the table', 'The tables worth knowing cold', '')}
+    ${mode('#explain', '✍️', 'Explain it', 'Write your answer, then check it against a model', '')}
+    ${miss ? mode('#misses', '🔁', 'Redo my misses', 'Questions you got wrong last time', miss + ' to redo') : ''}
+  </div>
+  ${GKEYS.map(ch => `<div class="section-h"><span class="dot" style="background:${chColor(ch)}"></span>${esc(GLABEL[ch])}</div>
+    <div class="kcgrid">${P.topics.filter(t => t.ch === ch).map(t => `<button class="kc" style="--chc:${chColor(ch)}" data-go="#kc/${t.id}"><span class="n">KEY CONCEPT ${kcNum(t.id)}</span><span class="t">${esc(t.title)}</span><span class="bar" role="img" aria-label="${Math.round(100 * mastery(t.id))} percent of its questions right"><i style="width:${Math.round(100 * mastery(t.id))}%"></i></span></button>`).join('')}</div>`).join('')}
+  <footer>These are practice questions written for studying. They are not the exam questions.<br>Free, no account. Your progress stays on this device.<br>${esc(U.course)} · ${esc(U.teacher)}<br><button id="reset">Reset my progress</button></footer>`;
+  $('#nx').onclick = () => go(nxt.h);
+  wire();
+  $('#reset').onclick = e => { const b = e.target; if (b.dataset.sure) { S = {cards:{}, q:{}, best:{}, tests:[], dk:{}}; save(); home(); } else { b.dataset.sure = 1; b.textContent = 'Tap again to erase all progress on this device'; } };
+}
+function nextStep() {
+  const due = dueCards().length, miss = missed().length;
+  if (due) return {h:'#cards', t:`Review ${due} Key Concept card${due > 1 ? 's' : ''}`, d:'They are due today. Two minutes.'};
+  const dd = DECKS.find(d => d.cards.some(c => S.dk[c.id] && S.dk[c.id].due <= today()));
+  if (dd) return {h:'#deck/' + dd.id, t:`Review your due ${dd.title.toLowerCase()}`, d:'Spaced review keeps them for the practical.'};
+  if (miss >= 5) return {h:'#misses', t:`Redo ${Math.min(miss, 15)} questions you missed`, d:'Misses are where the points are.'};
+  const fresh = P.topics.find(t => !started(t.id));
+  if (fresh) return {h:'#kc/' + fresh.id, t:`Key Concept ${kcNum(fresh.id)}: ${fresh.title}`, d:'Read it, then answer its questions.'};
+  const weak = P.topics.filter(t => mastery(t.id) < 0.999).sort((a, b) => mastery(a.id) - mastery(b.id))[0];
+  if (weak) return {h:'#kc/' + weak.id, t:`Shore up Key Concept ${kcNum(weak.id)}: ${weak.title}`, d:'Your weakest concept right now.'};
+  return {h:'#test', t:'Take a practice test', d:'You have every concept. Prove it under exam conditions.'};
+}
+const mode = (h, ic, t, d, s) => `<button class="mode" data-go="${h}"><span class="ic" aria-hidden="true">${ic}</span><span><b>${t}</b><div class="d">${d}</div></span><span class="score">${esc(s)}</span></button>`;
+function wire() { app.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go)); }
+const backLink = (h = '#home', label = 'Home') => `<a href="${h}">‹ ${label}</a>`;
+
+/* ---------- a Key Concept page ---------- */
+function concept(id) {
+  const t = topic(id); if (!t) return home();
+  const qs = qsFor(id), right = qs.filter(q => S.q[q.id]?.r === 1).length;
+  const extras = [...DECKS.filter(d => d.cards.some(c => c.kc === id)).map(d => mode('#deck/' + d.id + '/' + id, d.id === 'dmus' ? '💪' : '🕳️', d.title + ' for this concept', d.cards.filter(c => c.kc === id).length + ' cards, spaced review', '')),
+                  ...P.order.filter(o => o.kc.includes(id)).map(o => mode('#order/' + o.id, '🔢', 'Put it in order', o.title, '')),
+                  ...P.tables.filter(x => x.kc.includes(id)).map(x => mode('#tables/' + x.id, '📊', 'Rebuild the table', x.title, '')),
+                  ...P.explain.filter(x => x.kc.includes(id)).map(x => mode('#explain/' + x.id, '✍️', 'Explain it', x.prompt.length > 70 ? x.prompt.slice(0, 68) + '…' : x.prompt, ''))].join('');
+  app.innerHTML = `<p class="progress">${backLink()}</p>
+  <div class="kicker" style="color:${chColor(t.ch)}">Key Concept ${kcNum(id)} · ${esc(GLABEL[t.ch])}</div>
+  <h2 style="margin:4px 0 12px">${esc(t.title)}</h2>
+  <div class="card"><div style="font-size:17px">${esc(t.core)}</div>
+    <div class="trap"><b>⚠️ Common trap.</b> ${esc(t.trap)}</div></div>
+  <div class="card" style="margin-top:12px"><div class="label" style="margin-top:0">Quick check</div><div class="big" style="font-size:20px;margin-top:4px">${esc(t.q)}</div>
+    <div id="bf" class="back-face" hidden>${esc(t.a)}</div>
+    <div class="row" style="margin-top:12px"><button class="btn ghost" id="flip">Say it, then show the answer</button></div></div>
+  <div class="section-h">Practice this concept</div>
+  <div class="modes">${mode('#quiz/' + id, '❓', `${qs.length} questions`, right ? `${right} of ${qs.length} right last time` : 'Instant feedback on every choice', '')}${extras}</div>
+  <div class="row" style="margin-top:18px;justify-content:space-between">
+    ${kcNum(id) > 1 ? `<button class="btn ghost" data-go="#kc/${kcAt(kcNum(id) - 1).id}">‹ Key Concept ${kcNum(id) - 1}</button>` : '<span></span>'}
+    ${kcNum(id) < P.topics.length ? `<button class="btn ghost" data-go="#kc/${kcAt(kcNum(id) + 1).id}">Key Concept ${kcNum(id) + 1} ›</button>` : ''}</div>`;
+  $('#flip').onclick = () => { $('#bf').hidden = false; $('#flip').remove(); };
+  wire();
+}
+
+/* ---------- Key Concept cards (spaced) ---------- */
+function cards() {
+  const items = [...shuffle(dueCards()), ...newCards().slice(0, 8)].slice(0, 12);
+  const list = items.length ? items : shuffle(P.topics).slice(0, 10);
+  let i = 0, got = 0;
+  const show = () => {
+    if (i >= list.length) return done('cards', got, list.length, () => cards(), 'Cards come back on a schedule: tomorrow, then in 4, 10, 21 and 45 days.');
+    const t = list[i];
+    app.innerHTML = `<p class="progress">${backLink()}<span>${i + 1} of ${list.length}</span></p><div class="pbar"><i style="width:${100 * i / list.length}%"></i></div>
+    <div class="card"><div class="kicker" style="color:${chColor(t.ch)}">Key Concept ${kcNum(t.id)} · ${esc(t.title)}</div>
+      <div class="big" style="margin-top:8px">${esc(t.q)}</div>
+      <p class="note">Say your answer out loud before you flip. That is the part that makes it stick.</p>
+      <div id="bf" class="back-face" hidden><div style="font-size:18px">${esc(t.a)}</div><div class="trap"><b>⚠️ Trap.</b> ${esc(t.trap)}</div></div>
+      <div class="row" style="margin-top:14px" id="act"><button class="btn" id="flip">Show the answer</button></div></div>`;
+    $('#flip').onclick = () => { $('#bf').hidden = false;
+      $('#act').innerHTML = '<button class="btn ok" id="y">I had it</button><button class="btn ghost" id="n">Not yet</button>';
+      $('#y').onclick = () => { grade(t, true); got++; i++; show(); }; $('#n').onclick = () => { grade(t, false); i++; show(); }; $('#y').focus(); };
+  };
+  show();
+}
+function grade(t, knew) { const st = S.cards[t.id] || {box:0}; st.box = knew ? Math.min(st.box + 1, LADDER.length - 1) : 1; st.due = today() + (knew ? LADDER[st.box] : 1); S.cards[t.id] = st; save(); }
+
+/* ---------- card decks (muscles, openings): front -> back, spaced like the Key Concept cards ---------- */
+function deck(d, kc) {
+  if (!d) return home();
+  document.onkeydown = null;
+  const all = d.cards.filter(c => !kc || c.kc === kc);
+  const due = shuffle(all.filter(c => S.dk[c.id] && S.dk[c.id].due <= today()));
+  const fresh = shuffle(all.filter(c => !S.dk[c.id]));
+  const list = [...due, ...fresh].slice(0, 15);
+  const items = list.length ? list : shuffle(all).slice(0, 15);
+  let i = 0, got = 0;
+  const back = kc ? '#kc/' + kc : '#home';
+  const show = () => {
+    if (i >= items.length) return done('deck:' + d.id, got, items.length, () => deck(d, kc), 'Cards come back on a schedule: tomorrow, then in 4, 10, 21 and 45 days.', null, kc ? back : null);
+    const c = items[i];
+    app.innerHTML = `<p class="progress">${backLink(back, kc ? 'Key Concept' : 'Home')}<span>${esc(d.title)} · ${i + 1} of ${items.length}</span></p><div class="pbar"><i style="width:${100 * i / items.length}%"></i></div>
+    <div class="card"><div class="kicker" style="color:${chColor(topic(c.kc).ch)}">${esc(topic(c.kc).title)}</div>
+      <div class="big" style="margin-top:8px">${esc(c.front)}</div>
+      <p class="note">${d.id === 'dmus' ? 'Say its insertion and main action out loud, then flip.' : 'Say what passes through or sits in it, then flip.'}</p>
+      <div id="bf" class="back-face" hidden><div style="font-size:18px">${esc(c.back)}</div></div>
+      <div class="row" style="margin-top:14px" id="act"><button class="btn" id="flip">Show the answer</button></div></div>`;
+    $('#flip').onclick = () => { $('#bf').hidden = false;
+      $('#act').innerHTML = '<button class="btn ok" id="y">I had it</button><button class="btn ghost" id="n">Not yet</button>';
+      const g = knew => { const st = S.dk[c.id] || {box:0}; st.box = knew ? Math.min(st.box + 1, LADDER.length - 1) : 1; st.due = today() + (knew ? LADDER[st.box] : 1); S.dk[c.id] = st; save(); };
+      $('#y').onclick = () => { g(true); got++; i++; show(); }; $('#n').onclick = () => { g(false); i++; show(); }; $('#y').focus(); };
+  };
+  show();
+}
+
+/* ---------- quiz with elaborated feedback ---------- */
+function quizMenu() {
+  app.innerHTML = `<p class="progress">${backLink()}</p><h2 style="margin:0 0 6px">Quiz with feedback</h2><p class="lede">Ten questions at a time. New and missed questions come first.</p>
+  <div class="modes">${GKEYS.map((ch, gi) => { const qs = P.mcq.filter(q => topic(q.kc).ch === ch), r = qs.filter(q => S.q[q.id]?.r === 1).length;
+    const [head, ...rest] = GLABEL[ch].split(' · ');
+    return mode('#quiz/g/' + ch, '<span style="font-weight:800;color:' + chColor(ch) + '">' + (gi + 1) + '</span>', esc(rest.join(' · ') || head), esc(rest.length ? head : ''), `${r}/${qs.length} right`); }).join('')}
+    ${mode('#quiz/mixed', '🔀', 'Mixed', 'Every section, at random', '')}</div>`;
+  wire();
+}
+const LET = 'ABCD';
+function quiz(list, opt) {
+  if (!list.length) { app.innerHTML = `<p class="progress">${backLink()}</p><div class="card">Nothing here yet. Missed questions show up here after you practice.</div>`; return; }
+  let i = 0, got = 0; const misses = [];
+  const show = () => {
+    if (i >= list.length) return done(opt.key, got, list.length, () => route(), null, misses, opt.back);
+    const q = list[i], perm = shuffle([0, 1, 2, 3]);
+    app.innerHTML = `<p class="progress">${backLink(opt.back || '#home', opt.back ? 'Key Concept' : 'Home')}<span>${esc(opt.title)} · ${i + 1} of ${list.length}</span></p><div class="pbar"><i style="width:${100 * i / list.length}%"></i></div>
+    <div class="card">${q.title ? `<div class="case-h">🩺 Case · ${esc(q.title)}</div>` : ''}<p class="stem">${esc(q.q)}</p>
+      <div class="choices">${perm.map((o, k) => `<button class="choice" data-o="${o}"><span class="L">${LET[k]}</span><span>${esc(q.c[o])}</span></button>`).join('')}</div>
+      <div id="fb"></div></div>`;
+    const answer = o => {
+      const right = o === q.a; if (right) got++; else misses.push(q); record(q, right);
+      app.querySelectorAll('.choice').forEach(b => { b.disabled = true; const v = +b.dataset.o; if (v === q.a) b.classList.add('right'); else if (v === o) b.classList.add('wrong'); });
+      const t = topic(kcsOf(q)[0]);
+      $('#fb').innerHTML = `<div class="fb ${right ? '' : 'miss'}"><b>${right ? 'Yes.' : 'Not quite.'}</b> ${esc(q.why)}
+        ${right ? '' : `<p><b>Why not “${esc(q.c[o])}”?</b> ${esc(q.no[o])}</p>`}</div>
+        <details><summary>Why the other choices are wrong</summary><ul>${perm.filter(v => v !== q.a && v !== o).map(v => `<li><b>${esc(q.c[v])}:</b> ${esc(q.no[v])}</li>`).join('')}</ul></details>
+        <div class="row" style="margin-top:14px"><button class="btn" id="nx">${i + 1 < list.length ? 'Next' : 'See my score'}</button><a class="note" href="#kc/${t.id}" style="color:var(--accent)">Key Concept ${kcNum(t.id)}: ${esc(t.title)}</a></div>`;
+      $('#nx').onclick = () => { i++; show(); }; $('#nx').focus();
+    };
+    const own = [...app.querySelectorAll('.choice')];
+    own.forEach(b => b.onclick = () => answer(+b.dataset.o));
+    document.onkeydown = e => { if (!own.length || !own[0].isConnected || own.some(b => b.disabled)) return;   /* only this question's own buttons */
+      const k = '1234'.indexOf(e.key) >= 0 ? '1234'.indexOf(e.key) : 'abcd'.indexOf(e.key.toLowerCase());
+      if (k >= 0 && !e.metaKey && !e.ctrlKey && !e.altKey && document.activeElement.tagName !== 'TEXTAREA') answer(perm[k]); };
+  };
+  show();
+}
+
+/* ---------- practice test: exam conditions, feedback at the end ---------- */
+function test() {
+  document.onkeydown = null;
+  const kcs = shuffle(P.topics.map(t => t.id)).slice(0, 25);
+  const used = new Set();
+  const list = shuffle(kcs.map(k => { const q = shuffle(qsFor(k)).find(x => !used.has(x.id)); if (q) used.add(q.id); return q; }).filter(Boolean));
+  const ans = new Array(list.length).fill(null), perms = list.map(() => shuffle([0, 1, 2, 3]));
+  let i = 0;
+  const show = () => {
+    const q = list[i], perm = perms[i];
+    const count = () => `Practice test · ${i + 1} of ${list.length} · ${ans.filter(a => a != null).length} answered`;
+    app.innerHTML = `<p class="progress">${backLink()}<span id="tc">${count()}</span></p><div class="pbar"><i style="width:${100 * (i + 1) / list.length}%"></i></div>
+    <div class="card">${q.title ? `<div class="case-h">🩺 Case · ${esc(q.title)}</div>` : ''}<p class="stem">${esc(q.q)}</p>
+      <div class="choices">${perm.map((o, k) => `<button class="choice ${ans[i] === o ? 'picked' : ''}" data-o="${o}" aria-pressed="${ans[i] === o}"><span class="L">${LET[k]}</span><span>${esc(q.c[o])}</span></button>`).join('')}</div>
+      <div class="row" style="margin-top:16px;justify-content:space-between"><button class="btn ghost" id="pv" ${i ? '' : 'disabled'}>‹ Back</button>
+        ${i + 1 < list.length ? '<button class="btn" id="nx">Next ›</button>' : '<button class="btn ok" id="fin">Finish and score</button>'}</div></div>
+    <p class="note" style="text-align:center">No hints during the test. You will see every answer explained at the end.</p>`;
+    app.querySelectorAll('.choice').forEach(b => b.onclick = () => { ans[i] = +b.dataset.o; app.querySelectorAll('.choice').forEach(x => { x.classList.toggle('picked', x === b); x.setAttribute('aria-pressed', x === b); }); $('#tc').textContent = count(); });
+    $('#pv').onclick = () => { i--; show(); };
+    if ($('#nx')) $('#nx').onclick = () => { i++; show(); };
+    if ($('#fin')) $('#fin').onclick = () => { const blank = ans.filter(a => a == null).length;
+      if (blank && !$('#fin').dataset.sure) { $('#fin').dataset.sure = 1; $('#fin').textContent = `${blank} unanswered. Tap again to finish`; return; } finish(); };
+  };
+  const finish = () => {
+    let got = 0; const weak = new Set();
+    list.forEach((q, k) => { const r = ans[k] === q.a; if (r) got++; else kcsOf(q).forEach(x => weak.add(x)); record(q, r); });
+    const pct = Math.round(100 * got / list.length);
+    S.tests.push({d:today(), got, of:list.length, pct}); save();
+    app.innerHTML = `<p class="progress">${backLink()}</p><div class="card end"><div class="kicker">Practice test</div><div class="score">${pct}%</div><p>${got} of ${list.length} right. ${pct >= 90 ? 'That is an A. Keep it fresh with cards every day until the exam.' : pct >= 75 ? 'Solid. The concepts below are where your remaining points are.' : 'Now you know exactly what to study. Start with the list below, then test again.'}</p>
+      <div class="row" style="justify-content:center"><button class="btn" data-go="#test">New test</button><button class="btn ghost" data-go="#home">Home</button></div></div>
+    ${weak.size ? `<div class="section-h">Study these next</div><div class="modes">${[...weak].sort((a, b) => kcNum(a) - kcNum(b)).map(k => mode('#kc/' + k, '<span style="font-weight:800;color:' + chColor(topic(k).ch) + '">' + kcNum(k) + '</span>', esc(topic(k).title), esc(GLABEL[topic(k).ch]), '')).join('')}</div>` : ''}
+    <div class="section-h">Every question, explained</div>
+    <div class="card">${list.map((q, k) => { const r = ans[k] === q.a; return `<div class="review-item"><span class="tag ${r ? 'ok' : 'miss'}">${k + 1} · ${r ? 'right' : ans[k] == null ? 'blank' : 'missed'}</span>
+      <p style="margin:8px 0 4px">${esc(q.q)}</p><div class="note"><b>Answer:</b> ${esc(q.c[q.a])}${!r && ans[k] != null ? ` · <b>You chose:</b> ${esc(q.c[ans[k]])}` : ''}</div>
+      <details><summary>Why</summary><p style="margin:8px 0 0;font-size:15px">${esc(q.why)}${!r && ans[k] != null ? ' <b>Why not your choice:</b> ' + esc(q.no[ans[k]]) : ''}</p></details></div>`; }).join('')}</div>`;
+    wire(); window.scrollTo(0, 0);
+  };
+  show();
+}
+
+/* ---------- put it in order ---------- */
+function menu(kind) {
+  document.onkeydown = null;
+  const cfg = {order:['Put it in order', 'Tap the steps in the right order. A wrong tap shakes; keep going.', P.order, '#order/', '🔢', o => o.title, o => o.steps.length + ' steps'],
+               tables:['Rebuild the table', 'Fill every blank from the word bank. If you can rebuild a table from memory, you know it.', P.tables, '#tables/', '📊', t => t.title, t => t.rows.length + ' rows'],
+               explain:['Explain it', 'Write your answer first. Then compare with a model answer and check off what you included.', P.explain, '#explain/', '✍️', e => e.prompt, e => e.points.length + ' points']}[kind];
+  app.innerHTML = `<p class="progress">${backLink()}</p><h2 style="margin:0 0 6px">${cfg[0]}</h2><p class="lede">${cfg[1]}</p>
+  <div class="modes">${cfg[2].map(x => mode(cfg[3] + x.id, cfg[4], esc(cfg[5](x)), 'Key Concept ' + x.kc.map(kcNum).join(', '), S.best[x.id] != null ? 'best ' + S.best[x.id] : cfg[6](x))).join('')}</div>`;
+  wire();
+}
+function order(o) {
+  if (!o) return menu('order');
+  let next = 0, misses = 0; const bank = shuffle(o.steps.map((s, k) => ({s, k})));
+  const show = () => {
+    app.innerHTML = `<p class="progress">${backLink('#order', 'All sequences')}<span>${esc(o.title)}</span></p>
+    <div class="card"><p class="stem">${esc(o.prompt)}</p>
+      <ol class="built">${o.steps.slice(0, next).map(s => `<li>${esc(s)}</li>`).join('')}</ol>
+      ${next < o.steps.length ? `<div class="label">Tap step ${next + 1}</div><div class="chips">${bank.map(b => `<button class="chip ${b.k < next ? 'done' : ''}" data-k="${b.k}" ${b.k < next ? 'disabled' : ''}>${esc(b.s)}</button>`).join('')}</div>` : ''}
+      <div id="fb"></div></div>`;
+    app.querySelectorAll('.chip:not(.done)').forEach(b => b.onclick = () => {
+      if (+b.dataset.k === next) { next++; show(); if (next === o.steps.length) finish(); }
+      else { misses++; b.classList.add('bad'); setTimeout(() => b.classList.remove('bad'), 400); }
+    });
+  };
+  const finish = () => { const sc = Math.max(0, o.steps.length - misses); S.best[o.id] = Math.max(S.best[o.id] || 0, sc); save();
+    $('#fb').innerHTML = `<div class="fb ${misses ? 'miss' : ''}"><b>${misses ? `Done, with ${misses} wrong tap${misses > 1 ? 's' : ''}.` : 'Perfect order.'}</b><p>${esc(o.why)}</p></div>
+      <div class="row" style="margin-top:14px"><button class="btn" id="again">Again</button><button class="btn ghost" data-go="#order">All sequences</button><a class="note" style="color:var(--accent)" href="#kc/${o.kc[0]}">Key Concept ${kcNum(o.kc[0])}</a></div>`;
+    $('#again').onclick = () => order(o); wire(); };
+  show();
+}
+
+/* ---------- rebuild the table ---------- */
+function tableDrill(t) {
+  if (!t) return menu('tables');
+  const blanks = []; t.rows.forEach((r, ri) => r.forEach((c, ci) => { if (ci > 0) blanks.push({ri, ci, v:c}); }));
+  const bank = shuffle(blanks.map((b, k) => ({v:b.v, k})));
+  let cur = 0, misses = 0; const used = new Set();
+  const show = () => {
+    const at = (ri, ci) => blanks.findIndex(b => b.ri === ri && b.ci === ci);
+    app.innerHTML = `<p class="progress">${backLink('#tables', 'All tables')}<span>${esc(t.title)}</span></p>
+    <div class="card"><div class="tablewrap"><table class="drill"><thead><tr>${t.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>
+      ${t.rows.map((r, ri) => `<tr>${r.map((c, ci) => { if (ci === 0) return `<th scope="row" style="color:var(--ink);font-size:15px">${esc(c)}</th>`; const k = at(ri, ci);
+        return k < cur ? `<td class="filled">${esc(c)}</td>` : `<td class="blank ${k === cur ? 'cur' : ''}"><span>${k === cur ? '?' : ' '}</span></td>`; }).join('')}</tr>`).join('')}
+    </tbody></table></div>
+    ${cur < blanks.length ? `<div class="label">Fill the highlighted blank: ${esc(t.rows[blanks[cur].ri][0] || '')} · ${esc(t.head[blanks[cur].ci])}</div>
+      <div class="chips">${bank.filter(b => !used.has(b.k)).map(b => `<button class="chip" data-k="${b.k}">${esc(b.v)}</button>`).join('')}</div>` : ''}
+    <div id="fb"></div></div>`;
+    app.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+      const k = +b.dataset.k;
+      if (bank.find(x => x.k === k).v === blanks[cur].v) { used.add(k); cur++; show(); if (cur === blanks.length) finish(); }
+      else { misses++; b.classList.add('bad'); setTimeout(() => b.classList.remove('bad'), 400); }
+    });
+  };
+  const finish = () => { const sc = Math.max(0, blanks.length - misses); S.best[t.id] = Math.max(S.best[t.id] || 0, sc); save();
+    $('#fb').innerHTML = `<div class="fb ${misses ? 'miss' : ''}"><b>${misses ? `Rebuilt, with ${misses} wrong tap${misses > 1 ? 's' : ''}.` : 'Rebuilt perfectly.'}</b><p>Try it again tomorrow without looking at your notes first.</p></div>
+      <div class="row" style="margin-top:14px"><button class="btn" id="again">Again</button><button class="btn ghost" data-go="#tables">All tables</button>${t.kc.map(k => `<a class="note" style="color:var(--accent)" href="#kc/${k}">Key Concept ${kcNum(k)}</a>`).join('')}</div>`;
+    $('#again').onclick = () => tableDrill(t); wire(); };
+  show();
+}
+
+/* ---------- explain it ---------- */
+function explain(e) {
+  if (!e) return menu('explain');
+  document.onkeydown = null;
+  app.innerHTML = `<p class="progress">${backLink('#explain', 'All prompts')}<span>Explain it</span></p>
+  <div class="card"><p class="stem">${esc(e.prompt)}</p><textarea id="tx" aria-label="Write your explanation" placeholder="Write it the way you would on the exam: in order, with the right words."></textarea>
+    <div class="row" style="margin-top:12px" id="act"><button class="btn" id="rv">Compare with a model answer</button></div><div id="fb"></div></div>`;
+  $('#rv').onclick = () => {
+    $('#act').remove();
+    $('#fb').innerHTML = `<div class="model"><div class="label" style="margin-top:0">A full-credit answer</div>${esc(e.model)}</div>
+      <div class="label">Check off what your answer included</div>${e.points.map((p, k) => `<label class="check"><input type="checkbox" data-p="${k}"><span>${esc(p)}</span></label>`).join('')}
+      <div class="row" style="margin-top:14px"><button class="btn" id="sc">Score it</button></div><div id="res"></div>`;
+    $('#sc').onclick = () => { const got = app.querySelectorAll('[data-p]:checked').length; S.best[e.id] = Math.max(S.best[e.id] || 0, got); save();
+      $('#res').innerHTML = `<div class="fb ${got === e.points.length ? '' : 'miss'}"><b>${got} of ${e.points.length} points.</b> ${got === e.points.length ? 'That would earn full credit.' : 'Rewrite it once with the missing points. Writing it again is what locks it in.'}</div>
+        <div class="row" style="margin-top:12px"><button class="btn ghost" data-go="#explain">All prompts</button>${e.kc.map(k => `<a class="note" style="color:var(--accent)" href="#kc/${k}">Key Concept ${kcNum(k)}</a>`).join('')}</div>`; wire(); };
+  };
+}
+
+/* ---------- end of a session ---------- */
+function done(key, got, of, again, note, misses, back) {
+  document.onkeydown = null;
+  if (key) { S.best[key] = Math.max(S.best[key] || 0, got); save(); }
+  const pct = of ? Math.round(100 * got / of) : 0;
+  const weak = misses ? [...new Set(misses.flatMap(kcsOf))].sort((a, b) => kcNum(a) - kcNum(b)) : [];
+  app.innerHTML = `<p class="progress">${backLink()}</p><div class="card end"><div class="score">${got} / ${of}</div>
+    <p>${pct >= 90 ? 'Excellent. Come back in a few days and prove it again.' : pct >= 70 ? 'Solid. The misses are exactly what to look at once more.' : 'Good work. Every miss you read the reason for is a point you will get next time.'}</p>
+    ${note ? `<p class="note">${esc(note)}</p>` : ''}
+    <div class="row" style="justify-content:center"><button class="btn" id="again">Again</button>${back ? `<button class="btn ghost" data-go="${back}">Key Concept</button>` : ''}<button class="btn ghost" data-go="#home">Home</button></div></div>
+    ${weak.length ? `<div class="section-h">Review these Key Concepts</div><div class="modes">${weak.map(k => mode('#kc/' + k, '<span style="font-weight:800;color:' + chColor(topic(k).ch) + '">' + kcNum(k) + '</span>', esc(topic(k).title), esc(GLABEL[topic(k).ch]), '')).join('')}</div>` : ''}`;
+  $('#again').onclick = again; wire();
+}
+route();
+</script>
+</body>
+</html>
