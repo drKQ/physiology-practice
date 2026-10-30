@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Physiology Practice</title>
-<meta name="description" content="Free practice for Human Physiology, Unit 2: nerves, senses and muscle. Key Concept cards, questions that explain every wrong answer, patient cases, sequences, tables and a practice test.">
+<meta name="description" content="Free practice for Human Physiology: the heart, blood vessels, blood, immunity and breathing. Key Concept cards, questions that explain every wrong answer, patient cases, sequences, tables and a practice test.">
 <meta name="theme-color" content="#16324f">
 <style>
 :root{
@@ -191,7 +191,7 @@ function home() {
   const nxt = nextStep();
   const best = k => S.best[k] != null ? `best ${S.best[k]}` : '';
   app.innerHTML = `
-  <header class="top"><div style="flex:1"><div class="kicker">${esc(U.course)} · Unit ${U.unit}</div><h1>${esc(U.app)}</h1></div></header>
+  <header class="top"><div style="flex:1"><div class="kicker">${esc(U.course)} · Unit ${U.unit}</div><h1>${esc(U.app)}</h1></div>${(U.units || []).map(u => `<a class="icon-btn" href="${esc(u.href)}" title="${esc(u.title || u.label)}" aria-label="${esc(u.title || u.label)}">${esc(u.label)}</a>`).join('')}</header>
   <p class="lede">${esc(U.title)}, ${esc(U.chapters)}. Answer before you look, and every miss shows you why.</p>
   <div class="card hero" style="margin-bottom:12px">
     <div><div class="kicker">Key Concepts mastered</div><div class="count">${m} <span style="font-size:18px;color:var(--soft);font-weight:600">of ${P.topics.length}</span></div>
@@ -203,7 +203,7 @@ function home() {
   <div class="modes">
     ${mode('#test', '🎯', 'Practice test', '25 questions across the whole unit, scored at the end', S.tests.length ? 'last ' + S.tests[S.tests.length - 1].pct + '%' : '')}
     ${mode('#cards', '🃏', 'Key Concept cards', 'Say the answer out loud, then flip. Spaced review.', due ? due + ' due' : '')}
-    ${DECKS.map(d => { const n = d.cards.filter(c => S.dk[c.id] && S.dk[c.id].due <= today()).length; return mode('#deck/' + d.id, d.id === 'dmus' ? '💪' : '🕳️', esc(d.title), esc(d.desc), n ? n + ' due' : d.cards.length + ' cards'); }).join('')}
+    ${DECKS.map(d => { const n = d.cards.filter(c => S.dk[c.id] && S.dk[c.id].due <= today()).length; return mode('#deck/' + d.id, (d.icon || (d.id === 'dmus' ? '💪' : '🕳️')), esc(d.title), esc(d.desc), n ? n + ' due' : d.cards.length + ' cards'); }).join('')}
     ${mode('#quiz', '❓', 'Quiz with feedback', 'Pick a section. Every wrong choice explained.', '')}
     ${mode('#cases', '🩺', 'What broke?', 'Patient cases: find the structure or step that failed', best('cases'))}
     ${mode('#order', '🔢', 'Put it in order', U.order_blurb || 'Sequences worth knowing cold', '')}
@@ -238,7 +238,7 @@ const backLink = (h = '#home', label = 'Home') => `<a href="${h}">‹ ${label}</
 function concept(id) {
   const t = topic(id); if (!t) return home();
   const qs = qsFor(id), right = qs.filter(q => S.q[q.id]?.r === 1).length;
-  const extras = [...DECKS.filter(d => d.cards.some(c => c.kc === id)).map(d => mode('#deck/' + d.id + '/' + id, d.id === 'dmus' ? '💪' : '🕳️', d.title + ' for this concept', d.cards.filter(c => c.kc === id).length + ' cards, spaced review', '')),
+  const extras = [...DECKS.filter(d => d.cards.some(c => c.kc === id)).map(d => mode('#deck/' + d.id + '/' + id, (d.icon || (d.id === 'dmus' ? '💪' : '🕳️')), d.title + ' for this concept', d.cards.filter(c => c.kc === id).length + ' cards, spaced review', '')),
                   ...P.order.filter(o => o.kc.includes(id)).map(o => mode('#order/' + o.id, '🔢', 'Put it in order', o.title, '')),
                   ...P.tables.filter(x => x.kc.includes(id)).map(x => mode('#tables/' + x.id, '📊', 'Rebuild the table', x.title, '')),
                   ...P.explain.filter(x => x.kc.includes(id)).map(x => mode('#explain/' + x.id, '✍️', 'Explain it', x.prompt.length > 70 ? x.prompt.slice(0, 68) + '…' : x.prompt, ''))].join('');
@@ -298,7 +298,7 @@ function deck(d, kc) {
     app.innerHTML = `<p class="progress">${backLink(back, kc ? 'Key Concept' : 'Home')}<span>${esc(d.title)} · ${i + 1} of ${items.length}</span></p><div class="pbar"><i style="width:${100 * i / items.length}%"></i></div>
     <div class="card"><div class="kicker" style="color:${chColor(topic(c.kc).ch)}">${esc(topic(c.kc).title)}</div>
       <div class="big" style="margin-top:8px">${esc(c.front)}</div>
-      <p class="note">${d.id === 'dmus' ? 'Say its insertion and main action out loud, then flip.' : 'Say what passes through or sits in it, then flip.'}</p>
+      <p class="note">${esc(d.prompt || (d.id === 'dmus' ? 'Say its insertion and main action out loud, then flip.' : 'Say what passes through or sits in it, then flip.'))}</p>
       <div id="bf" class="back-face" hidden><div style="font-size:18px">${esc(c.back)}</div></div>
       <div class="row" style="margin-top:14px" id="act"><button class="btn" id="flip">Show the answer</button></div></div>`;
     $('#flip').onclick = () => { $('#bf').hidden = false;
